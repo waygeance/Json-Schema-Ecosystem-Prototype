@@ -100,6 +100,9 @@ export async function fetchRepositoryContributors(
 
     if (GITHUB_TOKEN) {
       headers["Authorization"] = `Bearer ${GITHUB_TOKEN}`;
+      console.log(`Using GitHub token for ${owner}/${repo}`);
+    } else {
+      console.warn(`No GitHub token available for ${owner}/${repo}`);
     }
 
     const response = await fetch(
@@ -107,22 +110,41 @@ export async function fetchRepositoryContributors(
       { headers },
     );
 
+    console.log(
+      `Contributors API response for ${owner}/${repo}:`,
+      response.status,
+    );
+
     if (!response.ok) {
+      console.error(
+        `Contributors API error for ${owner}/${repo}:`,
+        response.status,
+        response.statusText,
+      );
       return 0;
     }
 
-    // Get total count from Link header or fetch all
+    // Get total count from Link header
     const linkHeader = response.headers.get("Link");
+    console.log(`Link header for ${owner}/${repo}:`, linkHeader);
+
     if (linkHeader) {
       const match = linkHeader.match(/page=(\d+)[^>]*>;\s*rel="last"/);
       if (match) {
-        return parseInt(match[1], 10);
+        const count = parseInt(match[1], 10);
+        console.log(
+          `Contributors count from Link header for ${owner}/${repo}:`,
+          count,
+        );
+        return count;
       }
     }
 
-    // Fallback: fetch contributors count
+    // Fallback: fetch actual contributors array
     const contributors = await response.json();
-    return Array.isArray(contributors) ? contributors.length : 0;
+    const count = Array.isArray(contributors) ? contributors.length : 0;
+    console.log(`Contributors count from array for ${owner}/${repo}:`, count);
+    return count;
   } catch (error) {
     console.error(`Failed to fetch contributors for ${owner}/${repo}:`, error);
     return 0;
