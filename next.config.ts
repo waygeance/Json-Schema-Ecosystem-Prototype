@@ -11,11 +11,4 @@ const nextConfig: NextConfig = {
   },
 };
 
-// Only use static export for production builds
-if (process.env.NODE_ENV === "production") {
-  nextConfig.output = "export";
-  nextConfig.distDir = "dist";
-  nextConfig.trailingSlash = true;
-}
-
 export default nextConfig;
