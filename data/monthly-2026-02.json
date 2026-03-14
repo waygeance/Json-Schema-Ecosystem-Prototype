@@ -172,10 +172,10 @@
     },
     {
       "date": "2026-02",
-      "repositories": 2580,
-      "stars": 164580,
-      "downloads": 2455000,
-      "contributors": 3850
+      "repositories": 2490,
+      "stars": 160800,
+      "downloads": 2415000,
+      "contributors": 3780
     }
   ],
   "activityPatterns": [],
@@ -188,11 +188,11 @@
     "community": 87
   },
   "summary": {
-    "totalRepositories": 2580,
-    "totalStars": 164580,
-    "totalForks": 34425,
-    "totalDownloads": 2455000,
-    "totalContributors": 3850,
+    "totalRepositories": 2490,
+    "totalStars": 160800,
+    "totalForks": 33200,
+    "totalDownloads": 2415000,
+    "totalContributors": 3780,
     "healthScore": 87,
     "lastUpdated": "2026-02-28T23:59:59Z"
   },
