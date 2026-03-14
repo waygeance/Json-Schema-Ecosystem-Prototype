@@ -1,0 +1,204 @@
+{
+  "repositories": [
+    {
+      "name": "ajv",
+      "fullName": "ajv-validator/ajv",
+      "description": "Another JSON Schema Validator",
+      "stars": 15200,
+      "forks": 1280,
+      "contributors": 295,
+      "openIssues": 42,
+      "recentCommits": 18,
+      "language": "TypeScript",
+      "healthScore": 86,
+      "url": "https://github.com/ajv-validator/ajv",
+      "updatedAt": "2026-02-15T10:30:00Z",
+      "createdAt": "2015-01-15T10:30:00Z"
+    },
+    {
+      "name": "jsonschema",
+      "fullName": "tdegrunt/jsonschema",
+      "description": "JSON Schema validation for Node.js",
+      "stars": 9450,
+      "forks": 940,
+      "contributors": 192,
+      "openIssues": 28,
+      "recentCommits": 15,
+      "language": "JavaScript",
+      "healthScore": 80,
+      "url": "https://github.com/tdegrunt/jsonschema",
+      "updatedAt": "2026-02-15T10:30:00Z",
+      "createdAt": "2012-01-15T10:30:00Z"
+    },
+    {
+      "name": "website",
+      "fullName": "json-schema-org/website",
+      "description": "JSON Schema official website",
+      "stars": 1380,
+      "forks": 380,
+      "contributors": 108,
+      "openIssues": 15,
+      "recentCommits": 32,
+      "language": "TypeScript",
+      "healthScore": 93,
+      "url": "https://github.com/json-schema-org/website",
+      "updatedAt": "2026-02-15T10:30:00Z",
+      "createdAt": "2019-01-15T10:30:00Z"
+    },
+    {
+      "name": "community",
+      "fullName": "json-schema-org/community",
+      "description": "JSON Schema community resources",
+      "stars": 980,
+      "forks": 245,
+      "contributors": 75,
+      "openIssues": 10,
+      "recentCommits": 22,
+      "language": "Markdown",
+      "healthScore": 90,
+      "url": "https://github.com/json-schema-org/community",
+      "updatedAt": "2026-02-15T10:30:00Z",
+      "createdAt": "2020-01-15T10:30:00Z"
+    },
+    {
+      "name": "json-schema-spec",
+      "fullName": "json-schema-org/json-schema-spec",
+      "description": "JSON Schema specification",
+      "stars": 3450,
+      "forks": 490,
+      "contributors": 135,
+      "openIssues": 24,
+      "recentCommits": 12,
+      "language": "Markdown",
+      "healthScore": 96,
+      "url": "https://github.com/json-schema-org/json-schema-spec",
+      "updatedAt": "2026-02-15T10:30:00Z",
+      "createdAt": "2018-01-15T10:30:00Z"
+    }
+  ],
+  "packages": [
+    {
+      "name": "ajv",
+      "version": "8.13.0",
+      "description": "Another JSON Schema Validator",
+      "author": "Evgeny Poberezkin",
+      "license": "MIT",
+      "monthlyDownloads": 13800000,
+      "dependencies": 15,
+      "lastUpdated": "2026-02-15T10:30:00Z"
+    },
+    {
+      "name": "jsonschema",
+      "version": "1.4.2",
+      "description": "JSON Schema validation for Node.js",
+      "author": "Tom de Grunt",
+      "license": "BSD-3-Clause",
+      "monthlyDownloads": 6200000,
+      "dependencies": 8,
+      "lastUpdated": "2026-02-15T10:30:00Z"
+    },
+    {
+      "name": "z-schema",
+      "version": "5.0.6",
+      "description": "JSON Schema validator",
+      "author": "Egor",
+      "license": "MIT",
+      "monthlyDownloads": 2450000,
+      "dependencies": 12,
+      "lastUpdated": "2026-02-15T10:30:00Z"
+    },
+    {
+      "name": "@hyperjump/json-schema",
+      "version": "1.2.4",
+      "description": "JSON Schema Validator",
+      "author": "Jason Desrosiers",
+      "license": "MIT",
+      "monthlyDownloads": 1050000,
+      "dependencies": 5,
+      "lastUpdated": "2026-02-15T10:30:00Z"
+    }
+  ],
+  "languageDistribution": [
+    {
+      "language": "TypeScript",
+      "count": 920,
+      "percentage": 36.8
+    },
+    {
+      "language": "JavaScript",
+      "count": 780,
+      "percentage": 31.2
+    },
+    {
+      "language": "Python",
+      "count": 395,
+      "percentage": 15.8
+    },
+    {
+      "language": "Java",
+      "count": 225,
+      "percentage": 9.0
+    },
+    {
+      "language": "Go",
+      "count": 155,
+      "percentage": 6.2
+    },
+    {
+      "language": "Ruby",
+      "count": 90,
+      "percentage": 3.6
+    },
+    {
+      "language": "Other",
+      "count": 35,
+      "percentage": 1.4
+    }
+  ],
+  "growthTrends": [
+    {
+      "date": "2025-12",
+      "repositories": 2250,
+      "stars": 152000,
+      "downloads": 19200000,
+      "contributors": 3350
+    },
+    {
+      "date": "2026-01",
+      "repositories": 2418,
+      "stars": 156789,
+      "downloads": 2345678,
+      "contributors": 3689
+    },
+    {
+      "date": "2026-02",
+      "repositories": 2580,
+      "stars": 164580,
+      "downloads": 2455000,
+      "contributors": 3850
+    }
+  ],
+  "activityPatterns": [],
+  "ecosystemHealth": {
+    "overall": 87,
+    "documentation": 90,
+    "testing": 84,
+    "security": 86,
+    "maintenance": 88,
+    "community": 87
+  },
+  "summary": {
+    "totalRepositories": 2580,
+    "totalStars": 164580,
+    "totalForks": 34425,
+    "totalDownloads": 2455000,
+    "totalContributors": 3850,
+    "healthScore": 87,
+    "lastUpdated": "2026-02-28T23:59:59Z"
+  },
+  "_meta": {
+    "savedAt": "2026-02-28T23:59:59Z",
+    "version": "1.0.0",
+    "type": "monthly-snapshot"
+  }
+}
