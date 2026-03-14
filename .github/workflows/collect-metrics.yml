@@ -35,7 +35,7 @@ jobs:
           API_KEY: ${{ secrets.API_KEY }}
         run: |
           echo "Collecting ecosystem metrics..."
-          node scripts/collect-metrics.js
+          npx tsx scripts/collect-metrics.js
 
       - name: Commit and push changes
         run: |
