@@ -2,29 +2,29 @@ name: Collect Ecosystem Metrics
 
 on:
   schedule:
-    # Run every Sunday at 00:00 UTC (weekly collection)
-    - cron: '0 0 * * 0'
-  
+    # Run every day at 00:00 UTC (daily collection - every 24 hours)
+    - cron: "0 0 * * *"
+
   # Allow manual trigger
   workflow_dispatch:
 
 jobs:
   collect-metrics:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          cache: 'npm'
-      
+          node-version: "20"
+          cache: "npm"
+
       - name: Install dependencies
         run: npm ci
-      
+
       - name: Collect metrics
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -32,7 +32,7 @@ jobs:
         run: |
           echo "Collecting ecosystem metrics..."
           node scripts/collect-metrics.js
-      
+
       - name: Commit and push changes
         run: |
           git config --local user.email "action@github.com"
