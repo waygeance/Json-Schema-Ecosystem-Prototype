@@ -536,9 +536,7 @@ export async function fetchEcosystemMetrics(): Promise<EcosystemMetrics> {
 }
 
 // Fetch top contributors across json-schema-org repositories
-export async function fetchLeaderboardContributors(
-  topN: number = 10,
-): Promise<
+export async function fetchLeaderboardContributors(topN: number = 10): Promise<
   Array<{
     rank: number;
     username: string;
@@ -565,7 +563,7 @@ export async function fetchLeaderboardContributors(
       headers["Authorization"] = `Bearer ${GITHUB_TOKEN}`;
     }
 
-    // Fetch contributors from each repo
+    // Fetch contributors from each repo with timeout and retry
     const allContributors: Map<
       string,
       {
@@ -576,19 +574,30 @@ export async function fetchLeaderboardContributors(
       }
     > = new Map();
 
-    await Promise.all(
-      jsonSchemaRepos.map(async ({ owner, repo }) => {
+    for (const { owner, repo } of jsonSchemaRepos) {
+      let retries = 0;
+      const maxRetries = 3;
+
+      while (retries < maxRetries) {
         try {
+          const controller = new AbortController();
+          const timeoutId = setTimeout(() => controller.abort(), 15000); // 15 second timeout
+
           const response = await fetch(
             `${GITHUB_API_BASE}/repos/${owner}/${repo}/contributors?per_page=100`,
-            { headers },
+            {
+              headers,
+              signal: controller.signal,
+            },
           );
+
+          clearTimeout(timeoutId);
 
           if (!response.ok) {
             console.warn(
               `Failed to fetch contributors for ${owner}/${repo}: ${response.status}`,
             );
-            return;
+            break;
           }
 
           const contributors = await response.json();
@@ -613,14 +622,25 @@ export async function fetchLeaderboardContributors(
               }
             });
           }
-        } catch (error) {
+          break; // Success, move to next repo
+        } catch (error: any) {
+          retries++;
           console.error(
-            `Error fetching contributors for ${owner}/${repo}:`,
-            error,
+            `Attempt ${retries} failed for ${owner}/${repo}:`,
+            error.message,
           );
+
+          if (retries >= maxRetries) {
+            console.error(
+              `Max retries reached for ${owner}/${repo}, skipping...`,
+            );
+          } else {
+            // Wait before retry
+            await new Promise((resolve) => setTimeout(resolve, 1000 * retries));
+          }
         }
-      }),
-    );
+      }
+    }
 
     // Convert to array, sort by contributions, and take top N
     const sorted = Array.from(allContributors.values())
