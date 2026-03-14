@@ -13,10 +13,12 @@ import {
   GitFork,
   FileCode,
   Box,
+  Medal,
 } from "lucide-react";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { MetricCard } from "@/components/ui/MetricCard";
+import { Leaderboard } from "@/components/Leaderboard";
 import { LineChart } from "@/components/charts/LineChart";
 import { BarChart } from "@/components/charts/BarChart";
 import { PieChart } from "@/components/charts/PieChart";
@@ -313,6 +315,41 @@ export default function Dashboard() {
             </div>
           </div>
         )}
+
+        {/* Top Contributors Leaderboard */}
+        <div className="mb-8">
+          <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
+            Community Leaders
+          </h2>
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+            <Leaderboard />
+            <div className="rounded-lg border border-gray-200 bg-white p-6 dark:border-gray-800 dark:bg-gray-900">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+                About This Leaderboard
+              </h3>
+              <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                This leaderboard showcases the top contributors to the JSON
+                Schema Organization repositories. These amazing people help
+                build and maintain the tools that power JSON Schema across the
+                world!
+              </p>
+              <div className="space-y-2 text-sm">
+                <div className="flex items-center gap-2">
+                  <Medal className="h-4 w-4 text-yellow-500" />
+                  <span className="text-gray-700 dark:text-gray-300">
+                    Ranked by total contributions across all org repos
+                  </span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <GitBranch className="h-4 w-4 text-blue-500" />
+                  <span className="text-gray-700 dark:text-gray-300">
+                    Includes: website, community, spec, and more
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </main>
 
       <Footer />

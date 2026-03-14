@@ -534,3 +534,109 @@ export async function fetchEcosystemMetrics(): Promise<EcosystemMetrics> {
     throw error;
   }
 }
+
+// Fetch top contributors across json-schema-org repositories
+export async function fetchLeaderboardContributors(
+  topN: number = 10,
+): Promise<
+  Array<{
+    rank: number;
+    username: string;
+    avatar: string;
+    contributions: number;
+    repos: string[];
+  }>
+> {
+  const jsonSchemaRepos = [
+    { owner: "json-schema-org", repo: "website" },
+    { owner: "json-schema-org", repo: "community" },
+    { owner: "json-schema-org", repo: "json-schema-spec" },
+    { owner: "json-schema-org", repo: "json-schema-vocabularies" },
+    { owner: "json-schema-org", repo: "blog" },
+  ];
+
+  try {
+    const headers: Record<string, string> = {
+      Accept: "application/vnd.github.v3+json",
+      "User-Agent": "JSON-Schema-Dashboard",
+    };
+
+    if (GITHUB_TOKEN) {
+      headers["Authorization"] = `Bearer ${GITHUB_TOKEN}`;
+    }
+
+    // Fetch contributors from each repo
+    const allContributors: Map<
+      string,
+      {
+        username: string;
+        avatar: string;
+        contributions: number;
+        repos: Set<string>;
+      }
+    > = new Map();
+
+    await Promise.all(
+      jsonSchemaRepos.map(async ({ owner, repo }) => {
+        try {
+          const response = await fetch(
+            `${GITHUB_API_BASE}/repos/${owner}/${repo}/contributors?per_page=100`,
+            { headers },
+          );
+
+          if (!response.ok) {
+            console.warn(
+              `Failed to fetch contributors for ${owner}/${repo}: ${response.status}`,
+            );
+            return;
+          }
+
+          const contributors = await response.json();
+
+          if (Array.isArray(contributors)) {
+            contributors.forEach((contributor: any) => {
+              const username = contributor.login;
+              const avatar = contributor.avatar_url;
+              const contributions = contributor.contributions;
+
+              if (allContributors.has(username)) {
+                const existing = allContributors.get(username)!;
+                existing.contributions += contributions;
+                existing.repos.add(repo);
+              } else {
+                allContributors.set(username, {
+                  username,
+                  avatar,
+                  contributions,
+                  repos: new Set([repo]),
+                });
+              }
+            });
+          }
+        } catch (error) {
+          console.error(
+            `Error fetching contributors for ${owner}/${repo}:`,
+            error,
+          );
+        }
+      }),
+    );
+
+    // Convert to array, sort by contributions, and take top N
+    const sorted = Array.from(allContributors.values())
+      .sort((a, b) => b.contributions - a.contributions)
+      .slice(0, topN);
+
+    // Add rank and convert repos Set to array
+    return sorted.map((contributor, index) => ({
+      rank: index + 1,
+      username: contributor.username,
+      avatar: contributor.avatar,
+      contributions: contributor.contributions,
+      repos: Array.from(contributor.repos),
+    }));
+  } catch (error) {
+    console.error("Failed to fetch leaderboard contributors:", error);
+    return [];
+  }
+}
