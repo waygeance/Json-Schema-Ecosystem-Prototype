@@ -556,28 +556,50 @@ export default function Dashboard() {
             <Leaderboard />
             <div className="rounded-lg border border-gray-200 bg-white p-6 dark:border-gray-800 dark:bg-gray-900">
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-                About This Leaderboard
+                Feedback & Suggestions
               </h3>
               <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
-                This leaderboard showcases the top contributors to the JSON
-                Schema Organization repositories. These amazing people help
-                build and maintain the tools that power JSON Schema across the
-                world!
+                Help us improve the dashboard! Tell us what metrics you'd like
+                to see or suggest specific APIs to track.
               </p>
-              <div className="space-y-2 text-sm">
-                <div className="flex items-center gap-2">
-                  <Medal className="h-4 w-4 text-yellow-500" />
-                  <span className="text-gray-700 dark:text-gray-300">
-                    Ranked by total contributions across all org repos
-                  </span>
+              <form className="space-y-4">
+                <div>
+                  <label
+                    htmlFor="metrics"
+                    className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                  >
+                    What metrics would you like to add?
+                  </label>
+                  <textarea
+                    id="metrics"
+                    name="metrics"
+                    rows={3}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-white text-sm"
+                    placeholder="e.g., Issue resolution time, PR merge rate, documentation coverage..."
+                  />
                 </div>
-                <div className="flex items-center gap-2">
-                  <GitBranch className="h-4 w-4 text-blue-500" />
-                  <span className="text-gray-700 dark:text-gray-300">
-                    Includes: website, community, spec, and more
-                  </span>
+                <div>
+                  <label
+                    htmlFor="apis"
+                    className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                  >
+                    Any specific APIs you'd like us to track?
+                  </label>
+                  <textarea
+                    id="apis"
+                    name="apis"
+                    rows={3}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-white text-sm"
+                    placeholder="e.g., github.com/username/repo, npm package name..."
+                  />
                 </div>
-              </div>
+                <button
+                  type="button"
+                  className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition-colors text-sm"
+                >
+                  Submit Feedback
+                </button>
+              </form>
             </div>
           </div>
         </div>

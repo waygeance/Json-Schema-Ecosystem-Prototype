@@ -17,7 +17,7 @@ export function Footer() {
             </p>
             <div className="flex space-x-4">
               <a
-                href="https://github.com/json-schema-org"
+                href="https://github.com/waygeance/Json-Schema-Ecosystem-Prototype"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-gray-500 dark:hover:text-gray-300 transition-colors"
@@ -88,11 +88,11 @@ export function Footer() {
         <div className="mt-8 pt-8 border-t border-gray-200 dark:border-gray-800">
           <div className="flex flex-col sm:flex-row justify-between items-center">
             <p className="text-xs text-gray-500 dark:text-gray-400">
-              © 2024 JSON Schema Community. All rights reserved.
+              © 2026 JSON Schema Community. All rights reserved.
             </p>
             <p className="text-xs text-gray-500 dark:text-gray-400 mt-2 sm:mt-0">
               Made with <Heart className="inline h-3 w-3 text-red-500 mx-1" />{" "}
-              by the community
+              by Bhavya Singh (@waygeance)
             </p>
           </div>
         </div>
