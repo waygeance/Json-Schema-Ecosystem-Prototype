@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card';
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
 import {
   PieChart as RechartsPieChart,
   Pie,
@@ -8,9 +8,9 @@ import {
   ResponsiveContainer,
   Tooltip,
   Legend,
-} from 'recharts';
-import { ChartData } from '@/lib/types';
-import { generateColorPalette } from '@/lib/utils';
+} from "recharts";
+import { ChartData } from "@/lib/types";
+import { generateColorPalette } from "@/lib/utils";
 
 interface PieChartProps {
   title: string;
@@ -79,10 +79,10 @@ export function PieChart({
       <text
         x={x}
         y={y}
-        fill="white"
-        textAnchor={x > cx ? 'start' : 'end'}
+        fill="#111827"
+        textAnchor={x > cx ? "start" : "end"}
         dominantBaseline="central"
-        className="text-xs font-medium"
+        className="text-xs font-bold"
       >
         {`${(percent * 100).toFixed(0)}%`}
       </text>

@@ -92,27 +92,28 @@ export function debounce<T extends (...args: any[]) => any>(
 }
 
 export function generateColorPalette(count: number): string[] {
+  // Vibrant pop colors - high saturation for better visibility
   const colors = [
-    "#002CC4",
-    "#0052CC",
-    "#0066FF",
-    "#3385FF",
-    "#66A3FF",
-    "#99C2FF",
-    "#CCE0FF",
-    "#E6F2FF",
-    "#F0F7FF",
-    "#F8FAFF",
-    "#FF6B6B",
-    "#4ECDC4",
-    "#45B7D1",
-    "#96CEB4",
-    "#FFEAA7",
-    "#DDA0DD",
-    "#98D8C8",
-    "#F7DC6F",
-    "#BB8FCE",
-    "#85C1E2",
+    "#FF2D55", // Hot Pink
+    "#5856D6", // Purple
+    "#FF9500", // Orange
+    "#34C759", // Green
+    "#007AFF", // Blue
+    "#AF52DE", // Magenta
+    "#FF3B30", // Red
+    "#5AC8FA", // Light Blue
+    "#FFCC00", // Yellow
+    "#4CD964", // Lime
+    "#FF6B35", // Coral
+    "#8E44AD", // Dark Purple
+    "#00C7BE", // Teal
+    "#FF2D92", // Pink
+    "#32ADE6", // Sky Blue
+    "#A2845E", // Brown
+    "#E74C3C", // Crimson
+    "#3498DB", // Dodger Blue
+    "#2ECC71", // Emerald
+    "#F39C12", // Pumpkin
   ];
 
   return Array.from({ length: count }, (_, i) => colors[i % colors.length]);
