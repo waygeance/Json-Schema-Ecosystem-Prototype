@@ -7,6 +7,8 @@ import {
 } from "@/lib/utils";
 import { MetricCardProps } from "@/lib/types";
 import { cn } from "@/lib/utils";
+import { MetricInfoButton } from "./MetricPopup";
+import { Info } from "lucide-react";
 
 export function MetricCard({
   title,
@@ -16,7 +18,8 @@ export function MetricCard({
   icon,
   description,
   loading = false,
-}: MetricCardProps) {
+  metricInfo,
+}: MetricCardProps & { metricInfo?: any }) {
   if (loading) {
     return (
       <Card className="hover:shadow-md transition-shadow duration-200">
@@ -38,9 +41,17 @@ export function MetricCard({
       <CardContent className="p-6">
         <div className="flex items-center justify-between">
           <div className="space-y-2">
-            <p className="text-sm font-medium text-gray-600 dark:text-gray-400">
-              {title}
-            </p>
+            <div className="flex items-center gap-2">
+              <p className="text-sm font-medium text-gray-600 dark:text-gray-400">
+                {title}
+              </p>
+              {metricInfo && (
+                <MetricInfoButton
+                  metric={metricInfo}
+                  className="hover:bg-blue-50 p-1 rounded-full transition-colors"
+                />
+              )}
+            </div>
             <div className="flex items-baseline space-x-2">
               <p className="text-3xl font-bold text-gray-900 dark:text-white">
                 {typeof value === "number" ? formatNumber(value) : value}

@@ -2,8 +2,8 @@ name: Collect Ecosystem Metrics
 
 on:
   schedule:
-    # Run every hour at minute 0 (hourly collection)
-    - cron: "0 * * * *"
+    # Run daily at midnight UTC (daily collection)
+    - cron: "0 0 * * *"
 
   # Allow manual trigger
   workflow_dispatch:

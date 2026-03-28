@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card';
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
 import {
   LineChart as RechartsLineChart,
   Line,
@@ -10,8 +10,8 @@ import {
   Tooltip,
   Legend,
   ResponsiveContainer,
-} from 'recharts';
-import { ChartData } from '@/lib/types';
+} from "recharts";
+import { ChartData } from "@/lib/types";
 
 interface LineChartProps {
   title: string;
@@ -24,6 +24,7 @@ interface LineChartProps {
   }[];
   height?: number;
   loading?: boolean;
+  yAxisScale?: "linear" | "log";
 }
 
 export function LineChart({
@@ -32,6 +33,7 @@ export function LineChart({
   lines,
   height = 300,
   loading = false,
+  yAxisScale = "linear",
 }: LineChartProps) {
   if (loading) {
     return (
@@ -55,28 +57,28 @@ export function LineChart({
         <ResponsiveContainer width="100%" height={height}>
           <RechartsLineChart data={data}>
             <CartesianGrid strokeDasharray="3 3" className="opacity-30" />
-            <XAxis 
-              dataKey="name" 
+            <XAxis
+              dataKey="name"
               tick={{ fontSize: 12 }}
               className="text-gray-600 dark:text-gray-400"
             />
-            <YAxis 
+            <YAxis
               tick={{ fontSize: 12 }}
               className="text-gray-600 dark:text-gray-400"
+              scale={yAxisScale}
+              domain={yAxisScale === "log" ? ["auto", "auto"] : undefined}
+              allowDataOverflow={yAxisScale === "log"}
             />
-            <Tooltip 
+            <Tooltip
               contentStyle={{
-                backgroundColor: 'rgba(255, 255, 255, 0.95)',
-                border: '1px solid #e5e7eb',
-                borderRadius: '8px',
-                fontSize: '12px',
+                backgroundColor: "rgba(255, 255, 255, 0.95)",
+                border: "1px solid #e5e7eb",
+                borderRadius: "8px",
+                fontSize: "12px",
               }}
-              labelStyle={{ fontWeight: 'bold', marginBottom: '4px' }}
+              labelStyle={{ fontWeight: "bold", marginBottom: "4px" }}
             />
-            <Legend 
-              wrapperStyle={{ fontSize: '12px' }}
-              iconType="line"
-            />
+            <Legend wrapperStyle={{ fontSize: "12px" }} iconType="line" />
             {lines.map((line) => (
               <Line
                 key={line.dataKey}
