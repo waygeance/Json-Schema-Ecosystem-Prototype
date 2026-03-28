@@ -87,7 +87,7 @@ export function Leaderboard({ className }: LeaderboardProps) {
   return (
     <div
       className={cn(
-        "rounded-lg border bg-white p-6 dark:border-gray-800 dark:bg-gray-900",
+        "rounded-lg border bg-white p-6 dark:border-gray-800 dark:bg-gray-900 flex flex-col h-full",
         className,
       )}
     >
@@ -99,7 +99,7 @@ export function Leaderboard({ className }: LeaderboardProps) {
         </span>
       </h3>
 
-      <div className="space-y-3">
+      <div className="space-y-3 flex-1">
         {contributors.map((contributor) => (
           <div
             key={contributor.username}

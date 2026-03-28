@@ -552,54 +552,155 @@ export default function Dashboard() {
           <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
             Community Leaders
           </h2>
-          <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-            <Leaderboard />
-            <div className="rounded-lg border border-gray-200 bg-white p-6 dark:border-gray-800 dark:bg-gray-900">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-                Feedback & Suggestions
-              </h3>
-              <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
-                Help us improve the dashboard! Tell us what metrics you'd like
-                to see or suggest specific APIs to track.
-              </p>
-              <form className="space-y-4">
-                <div>
-                  <label
-                    htmlFor="metrics"
-                    className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 items-stretch">
+            <div className="h-full">
+              <Leaderboard />
+            </div>
+            <div className="space-y-6 flex flex-col h-full">
+              {/* Support the Ecosystem - Sponsors */}
+              <div className="rounded-lg border border-gray-200 bg-white p-6 dark:border-gray-800 dark:bg-gray-900 flex-shrink-0">
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                  Support the Ecosystem
+                </h3>
+                <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                  Fund the amazing people who build and maintain JSON Schema
+                  tools. Become a sponsor today!
+                </p>
+                <div className="space-y-3">
+                  <a
+                    href="https://opencollective.com/json-schema/contribute/golden-sponsor-68354/checkout?interval=month&amount=1000"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 p-3 rounded-lg bg-gradient-to-r from-yellow-400 to-yellow-600 hover:from-yellow-500 hover:to-yellow-700 transition-all"
                   >
-                    What metrics would you like to add?
-                  </label>
-                  <textarea
-                    id="metrics"
-                    name="metrics"
-                    rows={3}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-white text-sm"
-                    placeholder="e.g., Issue resolution time, PR merge rate, documentation coverage..."
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="apis"
-                    className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                    <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center text-white">
+                      <svg
+                        className="w-5 h-5"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                      </svg>
+                    </div>
+                    <div className="flex-1">
+                      <p className="text-sm font-bold text-white">
+                        Gold Sponsor
+                      </p>
+                      <p className="text-xs text-white/80">$1,000/month</p>
+                    </div>
+                    <span className="text-xs bg-white/20 text-white px-2 py-1 rounded-full font-medium">
+                      Become
+                    </span>
+                  </a>
+                  <a
+                    href="https://opencollective.com/json-schema/contribute/silver-sponsor-68353/checkout?interval=month&amount=500"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 p-3 rounded-lg bg-gradient-to-r from-gray-300 to-gray-400 hover:from-gray-400 hover:to-gray-500 transition-all"
                   >
-                    Any specific APIs you'd like us to track?
-                  </label>
-                  <textarea
-                    id="apis"
-                    name="apis"
-                    rows={3}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-white text-sm"
-                    placeholder="e.g., github.com/username/repo, npm package name..."
-                  />
+                    <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center text-white">
+                      <svg
+                        className="w-5 h-5"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                      </svg>
+                    </div>
+                    <div className="flex-1">
+                      <p className="text-sm font-bold text-white">
+                        Silver Sponsor
+                      </p>
+                      <p className="text-xs text-white/80">$500/month</p>
+                    </div>
+                    <span className="text-xs bg-white/20 text-white px-2 py-1 rounded-full font-medium">
+                      Become
+                    </span>
+                  </a>
+                  <a
+                    href="https://opencollective.com/json-schema/contribute/sponsor-10816/checkout?interval=month&amount=100"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 p-3 rounded-lg bg-gradient-to-r from-orange-400 to-orange-600 hover:from-orange-500 hover:to-orange-700 transition-all"
+                  >
+                    <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center text-white">
+                      <svg
+                        className="w-5 h-5"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                      </svg>
+                    </div>
+                    <div className="flex-1">
+                      <p className="text-sm font-bold text-white">
+                        Bronze Sponsor
+                      </p>
+                      <p className="text-xs text-white/80">$100/month</p>
+                    </div>
+                    <span className="text-xs bg-white/20 text-white px-2 py-1 rounded-full font-medium">
+                      Become
+                    </span>
+                  </a>
                 </div>
-                <button
-                  type="button"
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition-colors text-sm"
+                <a
+                  href="https://opencollective.com/json-schema"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-4 block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition-colors text-sm"
                 >
-                  Submit Feedback
-                </button>
-              </form>
+                  View All Sponsorship Options
+                </a>
+              </div>
+
+              {/* Feedback & Suggestions Form */}
+              <div className="rounded-lg border border-gray-200 bg-white p-6 dark:border-gray-800 dark:bg-gray-900 flex-1 flex flex-col">
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                  Feedback & Suggestions
+                </h3>
+                <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                  Help us improve! Your ideas make this dashboard better for
+                  everyone.
+                </p>
+                <form className="space-y-4 flex-1 flex flex-col">
+                  <div>
+                    <label
+                      htmlFor="metrics"
+                      className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                    >
+                      What metrics would you like to add?
+                    </label>
+                    <textarea
+                      id="metrics"
+                      name="metrics"
+                      rows={2}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-white text-sm"
+                      placeholder="e.g., Issue resolution time, PR merge rate, documentation coverage..."
+                    />
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="apis"
+                      className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                    >
+                      Any specific APIs you'd like us to track?
+                    </label>
+                    <textarea
+                      id="apis"
+                      name="apis"
+                      rows={2}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-white text-sm"
+                      placeholder="e.g., github.com/username/repo, npm package name..."
+                    />
+                  </div>
+                  <button
+                    type="button"
+                    className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition-colors text-sm mt-auto"
+                  >
+                    Submit Feedback
+                  </button>
+                </form>
+              </div>
             </div>
           </div>
         </div>
