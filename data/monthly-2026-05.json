@@ -539,7 +539,8 @@
     "lastUpdated": "2026-05-31T04:13:54.477Z"
   },
   "_meta": {
-    "savedAt": "2026-05-31T04:13:54.477Z",
-    "version": "1.0.0"
+    "savedAt": "2026-05-31T04:13:54.491Z",
+    "version": "1.0.0",
+    "type": "monthly-snapshot"
   }
 }
